@@ -27,33 +27,39 @@ jobs:
         run: python scripts/validate_portfolio.py
 
   pages-state:
-    name: Check GitHub Pages publishing source
+    name: Detect GitHub Pages publishing source
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pages: write
+      pages: read
     outputs:
-      enabled: ${{ steps.check.outputs.enabled }}
+      mode: ${{ steps.check.outputs.mode }}
     steps:
-      - name: Check whether Pages is configured for a workflow
+      - name: Detect workflow-based or branch-based Pages
         id: check
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          set -u
-          if build_type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '.build_type' 2>/dev/null)" && [ "$build_type" = "workflow" ]; then
-            echo "enabled=true" >> "$GITHUB_OUTPUT"
-            echo "GitHub Pages source is set to GitHub Actions."
+          set -Eeuo pipefail
+          build_type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '.build_type')"
+          echo "Detected GitHub Pages build_type: $build_type"
+          if [ "$build_type" = "workflow" ]; then
+            echo "mode=workflow" >> "$GITHUB_OUTPUT"
+            echo "The repository uses GitHub Actions as its Pages source."
+          elif [ "$build_type" = "legacy" ]; then
+            echo "mode=branch" >> "$GITHUB_OUTPUT"
+            echo "The repository uses branch-based Pages. The gh-pages branch will be kept in sync."
           else
-            echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::GitHub Pages deploy skipped: set Settings → Pages → Source to GitHub Actions, then run this workflow once."
+            echo "mode=unknown" >> "$GITHUB_OUTPUT"
+            echo "::error::Unsupported GitHub Pages build type: $build_type"
+            exit 1
           fi
 
-  deploy:
-    name: Deploy verified site
+  deploy-workflow:
+    name: Deploy Pages artifact
     needs: [validate, pages-state]
-    if: needs.pages-state.outputs.enabled == 'true'
+    if: needs.pages-state.outputs.mode == 'workflow'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -71,6 +77,7 @@ jobs:
         run: |
           mkdir -p dist
           cp index.html dist/index.html
+          touch dist/.nojekyll
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
@@ -78,3 +85,28 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  deploy-branch:
+    name: Publish branch-based Pages
+    needs: [validate, pages-state]
+    if: needs.pages-state.outputs.mode == 'branch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Package the public website
+        run: |
+          mkdir -p dist
+          cp index.html dist/index.html
+          touch dist/.nojekyll
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: false
