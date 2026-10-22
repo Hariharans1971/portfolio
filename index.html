@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A concise portfolio of Hariharan S.’s Python, backend, SQL and AI/ML engineering work, including RAG, automated tests, architecture decisions and project trade-offs.">
+<meta name="theme-color" content="#060810">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hariharan S. — Python, Backend & AI/ML Developer">
+<meta property="og:description" content="Explore practical Python, backend, SQL and AI/ML projects with tests, setup notes and honest engineering trade-offs.">
+<meta property="og:url" content="https://portfolio1-tau-sandy.vercel.app/">
+<meta name="twitter:card" content="summary">
 <title>Hariharan S. — Python Developer | AI/ML & Full-Stack Projects</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -818,13 +825,46 @@
     .research-card { padding: 32px 24px; }
     .projects-grid { grid-template-columns: 1fr; }
   }
+
+  /* Accessible navigation, keyboard focus, and reduced-motion support */
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 10001;
+    padding: 10px 14px; border-radius: 4px;
+    background: var(--gold); color: var(--black); font-weight: 700;
+  }
+  .skip-link:focus { top: 12px; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+  .project-evidence-links {
+    display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 22px;
+  }
+  .project-evidence-links a {
+    color: #adc8ff; font-size: 11px; text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .project-evidence-links a:hover { color: var(--gold); }
+  @media (hover: none), (pointer: coarse) {
+    #cursor, #cursor-ring { display: none !important; }
+    body, a, button { cursor: auto !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal, .reveal-left, .reveal-right { opacity: 1 !important; transform: none !important; }
+  }
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <!-- Custom Cursor -->
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+<div id="cursor" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
 
 <!-- ─── NAVBAR ─── -->
 <nav id="navbar">
@@ -840,14 +880,15 @@
     <div class="badge-dot"></div>
     Available for Work
   </div>
-  <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Menu">
+  <button type="button" class="nav-menu-btn" id="nav-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
+<main id="main-content">
 <!-- ─── HERO ─── -->
 <section id="home">
-  <canvas id="neural-canvas"></canvas>
+  <canvas id="neural-canvas" aria-hidden="true"></canvas>
   <div class="hero-bg-text" data-parallax="-0.15">HARIHARAN</div>
   <div class="hero-content">
     <div class="hero-eyebrow">Building the Future with AI</div>
@@ -1061,6 +1102,11 @@
         <h3>Document Analysis + RAG</h3>
         <p>FastAPI-based document Q&A demo with document upload, lexical passage retrieval, source labels, and optional Gemini answer generation. Includes API tests and Docker setup.</p>
         <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">FastAPI</span><span class="project-tag">RAG</span><span class="project-tag">Gemini</span></div>
+        <div class="project-evidence-links">
+          <a href="https://github.com/Hariharans1971/document_analysis/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Architecture &amp; trade-offs</a>
+          <a href="https://github.com/Hariharans1971/document_analysis/blob/main/RAG_GUIDE.md" target="_blank" rel="noopener noreferrer">Setup guide</a>
+          <a href="https://github.com/Hariharans1971/document_analysis/actions" target="_blank" rel="noopener noreferrer">CI tests</a>
+        </div>
         <div class="project-footer"><div class="project-metric">Status: <strong>Local demo</strong></div><a href="https://github.com/Hariharans1971/document_analysis" target="_blank" rel="noopener noreferrer" class="btn-code">View Code</a></div>
       </div>
     </div>
@@ -1181,7 +1227,7 @@
     <div class="leadership-body">
       <h3>Event Coordinator — MATRIX Association</h3>
       <div class="sub">AI/ML Division · Karunya Institute · Jan 2025 – Present</div>
-      <p>Leading the AI/ML division of Karunya's premier technical association. Organized technical workshops, hands-on coding events, and AI seminars for 200+ students. Built and managed cross-functional teams, sharpened communication and execution skills in a fast-paced environment.</p>
+      <p>Contributed to organising 27+ technical events with the AI/ML division of Karunya's technical association, including workshops, coding activities, and AI seminars. Coordinated people and delivery across the event cycle.</p>
       <div class="leadership-perks">
         <span class="leadership-perk">Team Leadership</span>
         <span class="leadership-perk">Event Management</span>
@@ -1197,7 +1243,7 @@
 <!-- ─── CERTIFICATIONS ─── -->
 <section id="certs">
   <div class="section-label reveal">Credentials</div>
-  <h2 class="section-title reveal">Certifications &<br><span class="gold">Badges.</span></h2>
+  <h2 class="section-title reveal">Credentials &amp; Technical<br><span class="gold">Practice.</span></h2>
   <div class="certs-grid">
     <div class="cert-card reveal">
       <div class="cert-icon">☁️</div>
@@ -1210,18 +1256,18 @@
     <div class="cert-card reveal" style="transition-delay:.1s">
       <div class="cert-icon">🐍</div>
       <div class="cert-info">
-        <h4>Python Programming</h4>
-        <p>Certified Practitioner</p>
+        <h4>Python Backend Projects</h4>
+        <p>FastAPI · REST APIs · SQL · Automated tests</p>
       </div>
-      <div class="cert-badge">Verified</div>
+      <div class="cert-badge">Project work</div>
     </div>
     <div class="cert-card reveal" style="transition-delay:.2s">
       <div class="cert-icon">🤖</div>
       <div class="cert-info">
-        <h4>Generative AI Fundamentals</h4>
-        <p>LLMs · Prompting · AI Systems</p>
+        <h4>RAG &amp; Retrieval Evaluation</h4>
+        <p>Source-labelled retrieval · synthetic benchmark</p>
       </div>
-      <div class="cert-badge">Verified</div>
+      <div class="cert-badge">Project work</div>
     </div>
   </div>
 </section>
@@ -1242,7 +1288,7 @@
       </a>
     </div>
     <div class="social-links reveal">
-      <a href="https://www.linkedin.com/in/hari-haran-b5aa50272/" target="_blank" class="social-btn">
+      <a href="https://www.linkedin.com/in/hari-haran-b5aa50272/" target="_blank" class="social-btn" rel="noopener noreferrer">
         <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
         LinkedIn
       </a>
@@ -1253,6 +1299,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <!-- ─── FOOTER ─── -->
 <footer>
@@ -1261,7 +1308,7 @@
     <a href="mailto:hariharansuresh1971@gmail.com">Email</a>
     <a href="https://www.linkedin.com/in/hari-haran-b5aa50272/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="https://github.com/Hariharans1971" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <span style="margin-left:8px">© 2025 — Built by Hariharan Suresh</span>
+    <span style="margin-left:8px">© 2026 — Built by Hariharan Suresh</span>
   </div>
 </footer>
 
@@ -1269,20 +1316,27 @@
 // ─── CURSOR ───
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX; mouseY = e.clientY;
-  cursor.style.left = mouseX + 'px';
-  cursor.style.top = mouseY + 'px';
-});
-function animRing() {
-  ringX += (mouseX - ringX) * 0.14;
-  ringY += (mouseY - ringY) * 0.14;
-  ring.style.left = ringX + 'px';
-  ring.style.top = ringY + 'px';
-  requestAnimationFrame(animRing);
+if (!prefersReducedMotion && !coarsePointer) {
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+  function animRing() {
+    ringX += (mouseX - ringX) * 0.14;
+    ringY += (mouseY - ringY) * 0.14;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+} else {
+  cursor.hidden = true;
+  ring.hidden = true;
 }
-animRing();
 
 // ─── NAVBAR SCROLL ───
 const navbar = document.getElementById('navbar');
@@ -1291,18 +1345,24 @@ window.addEventListener('scroll', () => {
 });
 
 // ─── MOBILE NAV ───
-document.getElementById('nav-menu-btn').addEventListener('click', () => {
-  document.getElementById('nav-links').classList.toggle('open');
+const navMenuButton = document.getElementById('nav-menu-btn');
+const navMenu = document.getElementById('nav-links');
+navMenuButton.addEventListener('click', () => {
+  const isOpen = navMenu.classList.toggle('open');
+  navMenuButton.setAttribute('aria-expanded', String(isOpen));
 });
 document.querySelectorAll('#nav-links a').forEach(a => {
-  a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+  a.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    navMenuButton.setAttribute('aria-expanded', 'false');
+  });
 });
 
 // ─── NEURAL NETWORK CANVAS ───
 const canvas = document.getElementById('neural-canvas');
 const ctx = canvas.getContext('2d');
 let nodes = [];
-const NODE_COUNT = 60;
+const NODE_COUNT = coarsePointer ? 24 : 44;
 
 function resizeCanvas() {
   canvas.width = canvas.offsetWidth;
@@ -1363,14 +1423,14 @@ function drawNeural() {
     ctx.fillStyle = `rgba(0,71,160,0.07)`;
     ctx.fill();
   });
-  animFrame = requestAnimationFrame(drawNeural);
+  if (!prefersReducedMotion) animFrame = requestAnimationFrame(drawNeural);
 }
 drawNeural();
 
 // ─── PARALLAX BG TEXT ───
 const bgText = document.querySelector('.hero-bg-text');
 window.addEventListener('scroll', () => {
-  if (bgText) {
+  if (!prefersReducedMotion && bgText) {
     const val = window.scrollY * -0.15;
     bgText.style.transform = `translate(-50%, calc(-50% + ${val}px))`;
   }
