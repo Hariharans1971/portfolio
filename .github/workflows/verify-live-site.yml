@@ -16,33 +16,43 @@ jobs:
   public-smoke-test:
     name: Verify public HTTP response
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 4
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: Vercel
+            url: https://portfolio1-tau-sandy.vercel.app/
+          - label: GitHub Pages
+            url: https://hariharans1971.github.io/portfolio/
     steps:
       - name: Request the public portfolio URL
         shell: bash
+        env:
+          SITE_LABEL: ${{ matrix.label }}
+          SITE_URL: ${{ matrix.url }}
         run: |
           set -Eeuo pipefail
-          url="https://portfolio1-tau-sandy.vercel.app/"
           body="$(mktemp)"
           trap 'rm -f "$body"' EXIT
 
           for attempt in $(seq 1 18); do
             status="$(curl --silent --show-error --location --connect-timeout 10 --max-time 20 \
-              --output "$body" --write-out '%{http_code}' "$url" 2>/dev/null || true)"
+              --output "$body" --write-out '%{http_code}' "$SITE_URL" 2>/dev/null || true)"
 
             if [ "$status" = "200" ] &&
                grep -Fq '<title>Hariharan S. — Python Developer | AI/ML & Full-Stack Projects</title>' "$body" &&
                grep -Fq 'docs/ARCHITECTURE.md' "$body" &&
                grep -Fq 'prefers-reduced-motion' "$body"; then
-              echo "PASS: $url returned HTTP 200 and the expected portfolio content."
+              echo "PASS: $SITE_LABEL at $SITE_URL returned HTTP 200 and the expected portfolio content."
               echo "Content checks passed: title, RAG architecture evidence, and reduced-motion support."
               exit 0
             fi
 
-            echo "Attempt $attempt/18 did not match expected public response (HTTP status: ${status:-network-error})."
+            echo "Attempt $attempt/18 did not match expected public response for $SITE_LABEL (HTTP status: ${status:-network-error})."
             sleep 5
           done
 
-          echo "::error::The live portfolio did not return the expected public HTTP 200 response."
-          echo "Check Vercel project deployment protection, assigned domain, and deployment status."
+          echo "::error::$SITE_LABEL did not return the expected public HTTP 200 response."
+          echo "Check deployment status, domain assignment, and deployment protection."
           exit 1
