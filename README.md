@@ -1,46 +1,43 @@
 # Hariharan S. — Developer Portfolio
 
-A responsive, single-page portfolio introducing my work across Python development, AI/ML, and full-stack learning. The visual design uses a dark blue-and-gold theme, custom CSS, and browser-side interactions.
+A static, responsive portfolio presenting selected projects in Python, backend development, SQL, and AI/ML. The page is built with HTML, CSS, and JavaScript.
+
+## Selected projects
+
+- **Document Analysis + RAG:** [Repository](https://github.com/Hariharans1971/document_analysis) · [RAG guide](https://github.com/Hariharans1971/document_analysis/blob/main/RAG_GUIDE.md)
+- **ClinicDesk full-stack appointment demo:** [Repository](https://github.com/Hariharans1971/Clinic) · [CI checks](https://github.com/Hariharans1971/Clinic/actions)
+- **Inventory Management System:** [Repository](https://github.com/Hariharans1971/inventory-management-system)
+- **Student Performance Prediction:** [Repository](https://github.com/Hariharans1971/Student-Performance-ML-Project)
 
 ## Preview locally
 
-No build step is required.
+Requires no build step.
 
-1. Clone the repository:
+```bash
+git clone https://github.com/Hariharans1971/portfolio.git
+cd portfolio
+python -m http.server 8000
+```
 
-   ```bash
-   git clone https://github.com/Hariharans1971/portfolio.git
-   cd portfolio
-   ```
+Open http://localhost:8000.
 
-2. Open `index.html` in a modern browser, or serve the folder locally:
+## Deploy with GitHub Pages
 
-   ```bash
-   python -m http.server 8000
-   ```
+This repository contains a static site. To publish it, open **Settings → Pages**, select the `main` branch and root folder, and save. The public site URL becomes available in GitHub Pages settings after deployment. The site is not described as live until that setup is complete.
 
-3. Visit `http://localhost:8000`.
+## Quality checklist
 
-The page loads Google Fonts from the internet, so typography may fall back to system fonts when offline.
+- Project links point to the actual repositories.
+- Social links should be verified after profile changes.
+- Skill descriptions are intentionally conservative; remove any skill or metric you cannot explain in an interview.
+- Do not commit API keys, credentials, private documents, or generated virtual environments.
 
-## Deploy
+## Stack
 
-This is a static site and can be hosted with GitHub Pages or another static hosting provider. For GitHub Pages, open the repository's **Settings → Pages**, choose the `main` branch and root folder, then save.
+HTML5 · CSS3 · JavaScript · Google Fonts
 
-## Before publishing
+## Contact
 
-- Check all project, GitHub, LinkedIn, and email links.
-- Verify the page on mobile and desktop.
-- Keep contact information intentional and current.
-- Avoid publishing API keys, passwords, or other secrets.
-
-## Built with
-
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Google Fonts
-
-## Author
-
-**Hariharan S.** — B.Tech Computer Science and Engineering (AI & ML), 2026
+- [GitHub](https://github.com/Hariharans1971)
+- [LinkedIn](https://www.linkedin.com/in/hari-haran-b5aa50272/)
+- [Email](mailto:hariharansuresh1971@gmail.com)
