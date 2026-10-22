@@ -43,9 +43,11 @@ jobs:
             if [ "$status" = "200" ] &&
                grep -Fq '<title>Hariharan S. — Python Developer | AI/ML & Full-Stack Projects</title>' "$body" &&
                grep -Fq 'docs/ARCHITECTURE.md' "$body" &&
-               grep -Fq 'prefers-reduced-motion' "$body"; then
+               grep -Fq 'prefers-reduced-motion' "$body" &&
+               grep -Fq 'Energy–Safety Trade-off' "$body" &&
+               ! grep -Fq 'Drug Discovery' "$body"; then
               echo "PASS: $SITE_LABEL at $SITE_URL returned HTTP 200 and the expected portfolio content."
-              echo "Content checks passed: title, RAG architecture evidence, and reduced-motion support."
+              echo "Content checks passed: title, RAG evidence, accessibility support, and corrected research topic."
               exit 0
             fi
 
