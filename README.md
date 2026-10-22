@@ -23,7 +23,7 @@ Open http://localhost:8000.
 
 ## Deploy with GitHub Pages
 
-This repository contains a static site. To publish it, open **Settings → Pages**, select the `main` branch and root folder, and save. The public site URL becomes available in GitHub Pages settings after deployment. The site is not described as live until that setup is complete.
+This repository contains a static site. GitHub Actions now publishes the site contents to the `gh-pages` branch (see [deployment run](https://github.com/Hariharans1971/portfolio/actions)). One repository-level setting still requires owner/admin access: open **Settings → Pages**, select **Deploy from a branch**, choose `gh-pages` and `/ (root)`, then save. GitHub's Pages configuration API is not accessible to the connected integration, so I could not enable this setting on your behalf. Expected URL after Pages is enabled: `https://hariharans1971.github.io/portfolio/`; verify it loads before sharing it as a live site.
 
 ## Quality checklist
 
