@@ -44,10 +44,12 @@ jobs:
                grep -Fq '<title>Hariharan S. — Python Developer | AI/ML & Full-Stack Projects</title>' "$body" &&
                grep -Fq 'docs/ARCHITECTURE.md' "$body" &&
                grep -Fq 'prefers-reduced-motion' "$body" &&
-               grep -Fq 'Energy–Safety Trade-off' "$body" &&
-               ! grep -Fq 'Drug Discovery' "$body"; then
+               grep -Fq 'Drug Mechanism of Action' "$body" &&
+               grep -Fq '10.1109/ICECA66444.2025.11383205' "$body" &&
+               ! grep -Fq 'Energy–Safety Trade-off' "$body" &&
+               ! grep -Fq 'Risk-Aware Dynamic Inference' "$body"; then
               echo "PASS: $SITE_LABEL at $SITE_URL returned HTTP 200 and the expected portfolio content."
-              echo "Content checks passed: title, RAG evidence, accessibility support, and corrected research topic."
+              echo "Content checks passed: title, RAG evidence, accessibility support, and verified IEEE citation."
               exit 0
             fi
 
