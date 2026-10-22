@@ -2,8 +2,8 @@
 
 A responsive static portfolio built with HTML, CSS, and JavaScript. The page highlights selected work with direct access to source, architecture notes, setup instructions, and CI evidence.
 
-**Portfolio deployment:** [Open the Vercel site](https://portfolio1-tau-sandy.vercel.app/)  
-**Source code:** [GitHub repository](https://github.com/Hariharans1971/portfolio)
+**Live sites:** [Vercel production](https://portfolio1-tau-sandy.vercel.app/) · [GitHub Pages](https://hariharans1971.github.io/portfolio/)  
+**Source code:** [GitHub repository](https://github.com/Hariharans1971/portfolio) · [CI and deployments](https://github.com/Hariharans1971/portfolio/actions)
 
 ## Featured projects
 
@@ -32,9 +32,12 @@ A dependency-free static validator checks the page title and metadata, required 
 python scripts/validate_portfolio.py
 ```
 
-GitHub Actions runs this validator on pushes to `main`. To publish with GitHub Pages, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**. Then open the **Actions** tab, choose **Publish portfolio to GitHub Pages**, and run the workflow once. The workflow checks the Pages source and skips deployment until it is configured; future pushes to `main` deploy the validated `index.html` automatically.
+GitHub Actions runs the static validator on pushes to `main`. The publishing workflow detects the repository's Pages source: if it is GitHub Actions, it uses the official Pages artifact deployment; if it is branch-based, it updates `gh-pages` with only `index.html` and `.nojekyll`. The live-site smoke test then checks both public URLs for HTTP 200 and key portfolio content.
 
-Expected GitHub Pages URL: https://hariharans1971.github.io/portfolio/
+- [Publish workflow](https://github.com/Hariharans1971/portfolio/actions/workflows/pages.yml)
+- [Live-site smoke tests](https://github.com/Hariharans1971/portfolio/actions/workflows/verify-live-site.yml)
+- [GitHub Pages URL](https://hariharans1971.github.io/portfolio/)
+- [Vercel production URL](https://portfolio1-tau-sandy.vercel.app/)
 
 ## Engineering and accessibility notes
 
