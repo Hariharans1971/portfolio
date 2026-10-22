@@ -6,22 +6,75 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: portfolio-pages
+  group: pages
   cancel-in-progress: true
 
 jobs:
-  publish:
+  validate:
+    name: Validate portfolio HTML
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Check out source
         uses: actions/checkout@v4
-      - name: Publish static portfolio to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: .
-          force_orphan: true
+          python-version: "3.12"
+      - name: Run static portfolio checks
+        run: python scripts/validate_portfolio.py
+
+  pages-state:
+    name: Check GitHub Pages publishing source
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+    outputs:
+      enabled: ${{ steps.check.outputs.enabled }}
+    steps:
+      - name: Check whether Pages is configured for a workflow
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -u
+          if build_type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '.build_type' 2>/dev/null)" && [ "$build_type" = "workflow" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "GitHub Pages source is set to GitHub Actions."
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::GitHub Pages deploy skipped: set Settings → Pages → Source to GitHub Actions, then run this workflow once."
+          fi
+
+  deploy:
+    name: Deploy verified site
+    needs: [validate, pages-state]
+    if: needs.pages-state.outputs.enabled == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Package only the public website
+        run: |
+          mkdir -p dist
+          cp index.html dist/index.html
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
