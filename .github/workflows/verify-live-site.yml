@@ -1,0 +1,48 @@
+name: Verify live portfolio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-live-portfolio
+  cancel-in-progress: true
+
+jobs:
+  public-smoke-test:
+    name: Verify public HTTP response
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Request the public portfolio URL
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          url="https://portfolio1-tau-sandy.vercel.app/"
+          body="$(mktemp)"
+          trap 'rm -f "$body"' EXIT
+
+          for attempt in $(seq 1 18); do
+            status="$(curl --silent --show-error --location --connect-timeout 10 --max-time 20 \
+              --output "$body" --write-out '%{http_code}' "$url" 2>/dev/null || true)"
+
+            if [ "$status" = "200" ] &&
+               grep -Fq '<title>Hariharan S. — Python Developer | AI/ML & Full-Stack Projects</title>' "$body" &&
+               grep -Fq 'docs/ARCHITECTURE.md' "$body" &&
+               grep -Fq 'prefers-reduced-motion' "$body"; then
+              echo "PASS: $url returned HTTP 200 and the expected portfolio content."
+              echo "Content checks passed: title, RAG architecture evidence, and reduced-motion support."
+              exit 0
+            fi
+
+            echo "Attempt $attempt/18 did not match expected public response (HTTP status: ${status:-network-error})."
+            sleep 5
+          done
+
+          echo "::error::The live portfolio did not return the expected public HTTP 200 response."
+          echo "Check Vercel project deployment protection, assigned domain, and deployment status."
+          exit 1
