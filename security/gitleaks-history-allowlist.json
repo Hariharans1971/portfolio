@@ -1,0 +1,122 @@
+[
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "generic-api-key",
+    "path": "packages/.vitepress/config.ts",
+    "commit": "df724509e0cb35a8b02aadaeb954d902b1810d13",
+    "line": 109,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public Algolia search-only configuration fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "generic-api-key",
+    "path": "packages/.vitepress/config.ts",
+    "commit": "cc79501461d78bf9fea889721ec64305ae2ee9a9",
+    "line": 78,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public Algolia search-only configuration fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "generic-api-key",
+    "path": "packages/.vitepress/config.ts",
+    "commit": "8782e1761203cdc0bf41e95e38504fed98351c77",
+    "line": 80,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public Algolia search-only configuration fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "generic-api-key",
+    "path": "packages/.vitepress/config.ts",
+    "commit": "34e2c2c90c80085e0868a1da57e99028c007d83a",
+    "line": 132,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public Algolia search-only configuration fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "generic-api-key",
+    "path": "packages/.vitepress/config.js",
+    "commit": "78bfc74a122d64c03209582abe4d5fe19ff65818",
+    "line": 38,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public Algolia search-only configuration fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "jwt",
+    "path": "skills/vueuse-functions/references/useJwt.md",
+    "commit": "c005dbefb4f46edfae1b5686deea7f97dd171102",
+    "line": 21,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; documented non-secret JWT example."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "jwt",
+    "path": "packages/integrations/useJwt/index.md",
+    "commit": "bcba58314057dc6200d23f803ece5b1e5e71c267",
+    "line": 21,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; documented non-secret JWT example."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "jwt",
+    "path": "packages/integrations/useJwt/index.test.ts",
+    "commit": "d9352a3092c5469783d0a8f842f2ff4ebf0314c5",
+    "line": 15,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public test fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "jwt",
+    "path": "packages/integrations/useJwt/demo.vue",
+    "commit": "d9352a3092c5469783d0a8f842f2ff4ebf0314c5",
+    "line": 6,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public demo fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "jwt",
+    "path": "packages/integrations/useJwt/index.test.ts",
+    "commit": "d9352a3092c5469783d0a8f842f2ff4ebf0314c5",
+    "line": 34,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public test fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "jwt",
+    "path": "packages/integrations/useJwt/demo.vue",
+    "commit": "7e178385796e68ebac51a31cdc27773b7877754b",
+    "line": 6,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public demo fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "jwt",
+    "path": "packages/integrations/useJwt/demo.vue",
+    "commit": "2efa26edb4ec2b4d52f36d278e1ad0112e327c89",
+    "line": 17,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public demo fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "jwt",
+    "path": "packages/integrations/useJwt/index.md",
+    "commit": "2efa26edb4ec2b4d52f36d278e1ad0112e327c89",
+    "line": 23,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; documented non-secret JWT example."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "jwt",
+    "path": "packages/integrations/useJwt/index.test.ts",
+    "commit": "2efa26edb4ec2b4d52f36d278e1ad0112e327c89",
+    "line": 15,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public test fixture."
+  },
+  {
+    "repo": "Hariharans1971/vueuse",
+    "rule": "jwt",
+    "path": "packages/integrations/useJwt/index.test.ts",
+    "commit": "2efa26edb4ec2b4d52f36d278e1ad0112e327c89",
+    "line": 41,
+    "evidence": "Blob SHA matches vueuse/vueuse at same commit; public test fixture."
+  }
+]
