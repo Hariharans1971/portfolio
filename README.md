@@ -1,17 +1,20 @@
-# Hariharan S. — Developer Portfolio
+# Hariharan S. — Python, Backend & AI/ML Portfolio
 
-A static, responsive portfolio presenting selected projects in Python, backend development, SQL, and AI/ML. The page is built with HTML, CSS, and JavaScript.
+A responsive static portfolio built with HTML, CSS, and JavaScript. The page highlights selected work with direct access to source, architecture notes, setup instructions, and CI evidence.
 
-## Selected projects
+**Portfolio deployment:** [Open the Vercel site](https://portfolio1-tau-sandy.vercel.app/)  
+**Source code:** [GitHub repository](https://github.com/Hariharans1971/portfolio)
 
-- **Document Analysis + RAG:** [Repository](https://github.com/Hariharans1971/document_analysis) · [RAG guide](https://github.com/Hariharans1971/document_analysis/blob/main/RAG_GUIDE.md)
-- **ClinicDesk full-stack appointment demo:** [Repository](https://github.com/Hariharans1971/Clinic) · [CI checks](https://github.com/Hariharans1971/Clinic/actions)
+## Featured projects
+
+- **Document Analysis + RAG:** [Repository](https://github.com/Hariharans1971/document_analysis) · [Architecture and trade-offs](https://github.com/Hariharans1971/document_analysis/blob/main/docs/ARCHITECTURE.md) · [Setup guide](https://github.com/Hariharans1971/document_analysis/blob/main/RAG_GUIDE.md) · [CI checks](https://github.com/Hariharans1971/document_analysis/actions)
+- **ClinicDesk appointment workflow demo:** [Repository](https://github.com/Hariharans1971/Clinic) · [CI checks](https://github.com/Hariharans1971/Clinic/actions)
 - **Inventory Management System:** [Repository](https://github.com/Hariharans1971/inventory-management-system)
 - **Student Performance Prediction:** [Repository](https://github.com/Hariharans1971/Student-Performance-ML-Project)
 
 ## Preview locally
 
-Requires no build step.
+Requires Python 3 only for the optional local server; there is no build step.
 
 ```bash
 git clone https://github.com/Hariharans1971/portfolio.git
@@ -21,23 +24,26 @@ python -m http.server 8000
 
 Open http://localhost:8000.
 
-## Deploy with GitHub Pages
+## Validation and deployment
 
-This repository contains a static site. GitHub Actions now publishes the site contents to the `gh-pages` branch (see [deployment run](https://github.com/Hariharans1971/portfolio/actions)). One repository-level setting still requires owner/admin access: open **Settings → Pages**, select **Deploy from a branch**, choose `gh-pages` and `/ (root)`, then save. GitHub's Pages configuration API is not accessible to the connected integration, so I could not enable this setting on your behalf. Expected URL after Pages is enabled: `https://hariharans1971.github.io/portfolio/`; verify it loads before sharing it as a live site.
+A dependency-free static validator checks the page title and metadata, required sections, duplicate IDs, in-page links, safe new-tab links, accessibility hooks, and project evidence links:
 
-## Quality checklist
+```bash
+python scripts/validate_portfolio.py
+```
 
-- Project links point to the actual repositories.
-- Social links should be verified after profile changes.
-- Skill descriptions are intentionally conservative; remove any skill or metric you cannot explain in an interview.
+GitHub Actions runs this validator on pushes to `main`. To publish with GitHub Pages, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**. Then open the **Actions** tab, choose **Publish portfolio to GitHub Pages**, and run the workflow once. The workflow checks the Pages source and skips deployment until it is configured; future pushes to `main` deploy the validated `index.html` automatically.
+
+Expected GitHub Pages URL: https://hariharans1971.github.io/portfolio/
+
+## Engineering and accessibility notes
+
+- The document-analysis project links include architecture, setup, and CI evidence, not only source code.
+- The page includes a keyboard skip link, visible keyboard focus, a mobile/coarse-pointer fallback, and reduced-motion support.
+- Certificate claims are limited to AZ-900; other credentials in the page are presented as project work rather than certifications.
+- The document-analysis retrieval benchmark is a six-query synthetic smoke baseline, not a claim of production accuracy.
 - Do not commit API keys, credentials, private documents, or generated virtual environments.
 
 ## Stack
 
 HTML5 · CSS3 · JavaScript · Google Fonts
-
-## Contact
-
-- [GitHub](https://github.com/Hariharans1971)
-- [LinkedIn](https://www.linkedin.com/in/hari-haran-b5aa50272/)
-- [Email](mailto:hariharansuresh1971@gmail.com)
