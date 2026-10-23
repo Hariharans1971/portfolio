@@ -439,6 +439,9 @@
   .banner-zentrix {
     background: linear-gradient(135deg, #060810 0%, #001233 40%, #0047A0 100%);
   }
+  .banner-ark {
+    background: linear-gradient(135deg, #07111f 0%, #101e37 54%, #123a45 100%);
+  }
   .banner-predict {
     background: linear-gradient(135deg, #060810 0%, #1a0a00 40%, #8B4500 100%);
   }
@@ -460,6 +463,9 @@
   }
   .banner-zentrix .banner-glow {
     background: radial-gradient(ellipse at center, rgba(0,71,160,.35) 0%, transparent 70%);
+  }
+  .banner-ark .banner-glow {
+    background: radial-gradient(ellipse at center, rgba(45,212,191,.28) 0%, transparent 72%);
   }
   .banner-predict .banner-glow {
     background: radial-gradient(ellipse at center, rgba(253,185,19,.2) 0%, transparent 70%);
@@ -899,7 +905,7 @@
         <div class="stat-chip-label">Internships</div>
       </div>
       <div class="stat-chip">
-        <div class="stat-chip-num">4</div>
+        <div class="stat-chip-num">5</div>
         <div class="stat-chip-label">Featured Projects</div>
       </div>
       <div class="stat-chip">
@@ -1063,7 +1069,21 @@
   <p class="muted reveal" style="max-width:720px;margin-top:18px">Selected learning projects. Each repository README documents setup and current limitations; these are portfolio demos, not claims of production deployment.</p>
   <div class="projects-grid" style="margin-top:40px">
     <div class="project-card reveal">
-      <div class="project-banner banner-zentrix"><div class="banner-glow"></div><div class="banner-content"><div class="banner-icon">📚</div></div><div class="project-num">01 / 04</div><div class="project-badge">RAG DEMO</div></div>
+      <div class="project-banner banner-ark"><div class="banner-glow"></div><div class="banner-content"><div class="banner-icon" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;letter-spacing:5px">ARK</div></div><div class="project-num">01 / 05</div><div class="project-badge">POLICY GATE</div></div>
+      <div class="project-body">
+        <h3>Agent Reliability Kit (ARK)</h3>
+        <p>Local-first Python developer tool for recording AI-agent workflows as JSONL traces, comparing runs, and enforcing reviewable policies for required or forbidden actions, call limits, and recorded duration/token budgets. Includes a reusable GitHub Action and CI tests.</p>
+        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">AI Agents</span><span class="project-tag">Policy-as-Code</span><span class="project-tag">GitHub Actions</span></div>
+        <div class="project-evidence-links">
+          <a href="https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Architecture &amp; limitations</a>
+          <a href="https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-/blob/main/docs/POLICY_CONTRACTS.md" target="_blank" rel="noopener noreferrer">Policy contracts</a>
+          <a href="https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-/actions" target="_blank" rel="noopener noreferrer">CI tests</a>
+        </div>
+        <div class="project-footer"><div class="project-metric">Status: <strong>Early-stage MVP</strong></div><a href="https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-" target="_blank" rel="noopener noreferrer" class="btn-code">View Code</a></div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-banner banner-zentrix"><div class="banner-glow"></div><div class="banner-content"><div class="banner-icon">📚</div></div><div class="project-num">02 / 05</div><div class="project-badge">RAG DEMO</div></div>
       <div class="project-body">
         <h3>Document Analysis + RAG</h3>
         <p>FastAPI-based document Q&A demo with document upload, lexical passage retrieval, source labels, and optional Gemini answer generation. Includes API tests and Docker setup.</p>
@@ -1077,7 +1097,7 @@
       </div>
     </div>
     <div class="project-card reveal" style="transition-delay:.1s">
-      <div class="project-banner banner-predict"><div class="banner-glow"></div><div class="banner-content"><div class="banner-icon">🗓️</div></div><div class="project-num">02 / 04</div><div class="project-badge">FULL-STACK</div></div>
+      <div class="project-banner banner-predict"><div class="banner-glow"></div><div class="banner-content"><div class="banner-icon">🗓️</div></div><div class="project-num">03 / 05</div><div class="project-badge">FULL-STACK</div></div>
       <div class="project-body">
         <h3>ClinicDesk Appointment Manager</h3>
         <p>Small full-stack application with a browser UI, FastAPI endpoints, SQLite persistence, request validation, API documentation, and automated tests.</p>
@@ -1086,7 +1106,7 @@
       </div>
     </div>
     <div class="project-card reveal">
-      <div class="project-banner banner-zentrix"><div class="banner-glow"></div><div class="banner-content"><div class="banner-icon">🗃️</div></div><div class="project-num">03 / 04</div><div class="project-badge">SQL</div></div>
+      <div class="project-banner banner-zentrix"><div class="banner-glow"></div><div class="banner-content"><div class="banner-icon">🗃️</div></div><div class="project-num">04 / 05</div><div class="project-badge">SQL</div></div>
       <div class="project-body">
         <h3>Inventory Management System</h3>
         <p>MySQL database project with 13 relational tables and 5,795 synthetic rows. Includes inventory, purchasing, sales, payments, stock-movement reports, indexes, and EXPLAIN-based query-plan exercises; no unmeasured performance improvement is claimed.</p>
@@ -1095,7 +1115,7 @@
       </div>
     </div>
     <div class="project-card reveal" style="transition-delay:.1s">
-      <div class="project-banner banner-predict"><div class="banner-glow"></div><div class="banner-content"><div class="banner-icon">📈</div></div><div class="project-num">04 / 04</div><div class="project-badge">MACHINE LEARNING</div></div>
+      <div class="project-banner banner-predict"><div class="banner-glow"></div><div class="banner-content"><div class="banner-icon">📈</div></div><div class="project-num">05 / 05</div><div class="project-badge">MACHINE LEARNING</div></div>
       <div class="project-body">
         <h3>Student Performance Prediction</h3>
         <p>Reproducible evaluation on 480 tracked rows and 16 predictors using a fixed stratified holdout split. Random Forest: accuracy 0.8083, macro-F1 0.8118; majority baseline: accuracy 0.4417, macro-F1 0.2042. Dataset-specific evidence only, not external validation.</p>
