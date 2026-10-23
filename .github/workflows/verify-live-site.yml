@@ -41,7 +41,7 @@ jobs:
               --output "$body" --write-out '%{http_code}' "$SITE_URL" 2>/dev/null || true)"
 
             if [ "$status" = "200" ] &&
-               grep -Fq '<title>Hariharan S. — Python Developer | AI/ML & Full-Stack Projects</title>' "$body" &&
+               grep -Fq '<title>Hariharan S. — Python Developer | Backend, AI/ML & Applied AI</title>' "$body" &&
                grep -Fq 'docs/ARCHITECTURE.md' "$body" &&
                grep -Fq 'prefers-reduced-motion' "$body" &&
                grep -Fq 'Drug Mechanism of Action' "$body" &&
