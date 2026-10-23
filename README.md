@@ -11,7 +11,7 @@ A responsive static portfolio built with HTML, CSS, and JavaScript. The page hig
 
 ## Featured projects
 
-- **Agent Reliability Kit (ARK):** [Repository](https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-) · [Policy contracts](https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-/blob/main/docs/POLICY_CONTRACTS.md) · [Architecture](https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-/blob/main/docs/ARCHITECTURE.md) · [CI checks](https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-/actions) — local-first agent trace diffs and declarative policy gates for CI.
+- **Agent Reliability Kit (ARK):** [Repository](https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-) · [Policy contracts](https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-/blob/main/docs/POLICY_CONTRACTS.md) · [Architecture](https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-/blob/main/docs/ARCHITECTURE.md) · [Try the offline trace viewer](https://portfolio1-tau-sandy.vercel.app/ark-trace-viewer.html) · [CI checks](https://github.com/Hariharans1971/Agent-Reliability-Kit-ARK-/actions) — local-first agent trace diffs and declarative policy gates for CI.
 
 - **Document Analysis + RAG:** [Repository](https://github.com/Hariharans1971/document_analysis) · [Architecture and trade-offs](https://github.com/Hariharans1971/document_analysis/blob/main/docs/ARCHITECTURE.md) · [Setup guide](https://github.com/Hariharans1971/document_analysis/blob/main/RAG_GUIDE.md) · [CI checks](https://github.com/Hariharans1971/document_analysis/actions)
 - **ClinicDesk appointment workflow demo:** [Repository](https://github.com/Hariharans1971/Clinic) · [CI checks](https://github.com/Hariharans1971/Clinic/actions)
