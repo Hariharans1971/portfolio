@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / "index.html"
+TRACE_VIEWER = ROOT / "ark-trace-viewer.html"
 REQUIRED_SECTIONS = {"home", "work", "experience", "research", "contact"}
 PLACEHOLDER_PATTERNS = (
     r"lorem ipsum",
@@ -116,6 +117,21 @@ def main() -> int:
         if marker not in source:
             issues.append(f"Missing recruiter/accessibility evidence marker: {marker}")
 
+    if not TRACE_VIEWER.is_file():
+        issues.append("The offline ARK trace viewer page is missing.")
+    else:
+        viewer_source = TRACE_VIEWER.read_text(encoding="utf-8")
+        for marker in (
+            "<title>ARK Trace Viewer — Offline JSONL Explorer</title>",
+            'id="fileInput"',
+            "Local processing by design",
+        ):
+            if marker not in viewer_source:
+                issues.append("Trace viewer is missing expected marker: " + marker)
+        for forbidden in ("<script src=", "fetch(", "XMLHttpRequest", "WebSocket(", "EventSource(", ".innerHTML"):
+            if forbidden.lower() in viewer_source.lower():
+                issues.append("Trace viewer must not include remote or unsafe runtime feature: " + forbidden)
+
     if issues:
         print("Portfolio validation failed:")
         for issue in issues:
@@ -128,6 +144,7 @@ def main() -> int:
     print(f"- In-page links checked: {len(parser.fragment_links)}")
     print(f"- Required sections: {', '.join(sorted(REQUIRED_SECTIONS))}")
     print("- Accessibility metadata, motion support, link safety, and proof-of-work links present.")
+    print("- Offline ARK trace viewer asset and no-remote-runtime checks passed.")
     return 0
 
 
