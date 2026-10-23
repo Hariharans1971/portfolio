@@ -1,3 +1,5 @@
+![Hariharan S. — Python, Backend & Applied AI](https://raw.githubusercontent.com/Hariharans1971/hariharansuresh1971-dotcom/main/assets/github-profile-banner.svg)
+
 # Hariharan S. — Python, Backend & AI/ML Portfolio
 
 [![Portfolio validation](https://github.com/Hariharans1971/portfolio/actions/workflows/pages.yml/badge.svg)](https://github.com/Hariharans1971/portfolio/actions/workflows/pages.yml) [![Live-site checks](https://github.com/Hariharans1971/portfolio/actions/workflows/verify-live-site.yml/badge.svg)](https://github.com/Hariharans1971/portfolio/actions/workflows/verify-live-site.yml) [![History secret audit](https://github.com/Hariharans1971/portfolio/actions/workflows/account-secret-audit.yml/badge.svg)](https://github.com/Hariharans1971/portfolio/actions/workflows/account-secret-audit.yml)
