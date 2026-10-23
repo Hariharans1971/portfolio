@@ -1,5 +1,7 @@
 # Hariharan S. — Python, Backend & AI/ML Portfolio
 
+[![Portfolio validation](https://github.com/Hariharans1971/portfolio/actions/workflows/pages.yml/badge.svg)](https://github.com/Hariharans1971/portfolio/actions/workflows/pages.yml) [![Live-site checks](https://github.com/Hariharans1971/portfolio/actions/workflows/verify-live-site.yml/badge.svg)](https://github.com/Hariharans1971/portfolio/actions/workflows/verify-live-site.yml) [![History secret audit](https://github.com/Hariharans1971/portfolio/actions/workflows/account-secret-audit.yml/badge.svg)](https://github.com/Hariharans1971/portfolio/actions/workflows/account-secret-audit.yml)
+
 A responsive static portfolio built with HTML, CSS, and JavaScript. The page highlights selected work with direct access to source, architecture notes, setup instructions, and CI evidence.
 
 **Live sites:** [Vercel production](https://portfolio1-tau-sandy.vercel.app/) · [GitHub Pages](https://hariharans1971.github.io/portfolio/)  
