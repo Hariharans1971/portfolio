@@ -46,7 +46,7 @@ GitHub Actions runs the static validator on pushes to `main`. The publishing wor
 - The document-analysis project links include architecture, setup, and CI evidence, not only source code.
 - The page includes a keyboard skip link, visible keyboard focus, a mobile/coarse-pointer fallback, and reduced-motion support.
 - Certificate claims are limited to AZ-900; other credentials in the page are presented as project work rather than certifications.
-- The document-analysis retrieval benchmark is a six-query synthetic smoke baseline, not a claim of production accuracy.
+- The document-analysis CI benchmark covers 24 authored positive queries plus six negative smoke queries and compares lexical retrieval with a simple term-overlap baseline; scores are synthetic regression evidence, not real-world quality claims.
 - Do not commit API keys, credentials, private documents, or generated virtual environments.
 
 ## Stack
