@@ -13,6 +13,51 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  viewer-smoke-test:
+    name: Verify public offline trace viewer
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: Vercel
+            url: https://portfolio1-tau-sandy.vercel.app/ark-trace-viewer.html
+          - label: GitHub Pages
+            url: https://hariharans1971.github.io/portfolio/ark-trace-viewer.html
+    steps:
+      - name: Request viewer URL and validate offline behavior markers
+        shell: bash
+        env:
+          SITE_LABEL: ${{ matrix.label }}
+          SITE_URL: ${{ matrix.url }}
+        run: |
+          set -Eeuo pipefail
+          body="$(mktemp)"
+          trap 'rm -f "$body"' EXIT
+
+          for attempt in $(seq 1 12); do
+            status="$(curl --silent --show-error --location --connect-timeout 10 --max-time 20 \
+              --output "$body" --write-out '%{http_code}' "$SITE_URL" 2>/dev/null || true)"
+
+            if [ "$status" = "200" ] &&
+               grep -Fq '<title>ARK Trace Viewer — Offline JSONL Explorer</title>' "$body" &&
+               grep -Fq 'id="fileInput"' "$body" &&
+               grep -Fq 'Local processing by design' "$body" &&
+               ! grep -Fq '<script src=' "$body" &&
+               ! grep -Fq 'fetch(' "$body" &&
+               ! grep -Fq 'XMLHttpRequest' "$body"; then
+              echo "PASS: $SITE_LABEL is serving the offline trace viewer with no remote runtime dependencies."
+              exit 0
+            fi
+
+            echo "Attempt $attempt/12 did not match expected viewer response for $SITE_LABEL (HTTP: ${status:-network-error})."
+            sleep 5
+          done
+
+          echo "::error::$SITE_LABEL did not return the expected offline trace viewer page."
+          exit 1
+
   public-smoke-test:
     name: Verify public HTTP response
     runs-on: ubuntu-latest
